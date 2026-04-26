@@ -1,12 +1,16 @@
 import { db, getSettings, type UserSettings } from '@/lib/db';
+import { getOpenAiApiKey, setOpenAiApiKey } from '@/lib/openai';
 import { PROTOCOLS, type ProtocolId } from '@/lib/protocols';
 import { useFastStore } from '@/store/useFastStore';
+import { useState } from 'react';
+import { USDA_FOODS, usdaToFoodItem } from '@/lib/foodDb';
 
 export function Settings() {
   const settings = useFastStore(s => s.settings);
   const loading = useFastStore(s => s.loading);
   const patchSettings = useFastStore(s => s.patchSettings);
   const hydrate = useFastStore(s => s.hydrate);
+  const [openAiApiKey, setOpenAiApiKeyState] = useState(() => getOpenAiApiKey());
 
   if (loading) return <div className="card text-slate-400">Loading…</div>;
 
@@ -16,8 +20,10 @@ export function Settings() {
 
   async function exportJson() {
     const windows = await db.windows.toArray();
+    const foodItems = await db.foodItems.toArray();
+    const mealEntries = await db.mealEntries.toArray();
     const all = await getSettings();
-    const blob = new Blob([JSON.stringify({ windows, settings: all }, null, 2)], {
+    const blob = new Blob([JSON.stringify({ windows, foodItems, mealEntries, settings: all }, null, 2)], {
       type: 'application/json',
     });
     const url = URL.createObjectURL(blob);
@@ -31,6 +37,9 @@ export function Settings() {
   async function clearAll() {
     if (!confirm('Delete all eating windows and settings? This cannot be undone.')) return;
     await db.windows.clear();
+    await db.mealEntries.clear();
+    await db.foodItems.clear();
+    await db.foodItems.bulkAdd(USDA_FOODS.map(usdaToFoodItem));
     await db.settings.clear();
     await hydrate();
   }
@@ -117,6 +126,28 @@ export function Settings() {
                 workoutLeadHours: e.target.value ? Number(e.target.value) : undefined,
               })
             }
+          />
+        </label>
+      </section>
+
+      <section className="card">
+        <h2 className="font-display text-lg">AI</h2>
+        <p className="mt-2 text-sm text-slate-400">
+          Used for nutrition estimates when you add a custom food item.
+        </p>
+        <label className="mt-3 block text-sm">
+          <span className="label block mb-1">OpenAI API key</span>
+          <input
+            type="password"
+            autoComplete="off"
+            className="w-full rounded-lg bg-slate-900 border border-slate-800 px-3 py-2.5 text-base"
+            value={openAiApiKey}
+            onChange={e => {
+              const value = e.target.value;
+              setOpenAiApiKeyState(value);
+              setOpenAiApiKey(value);
+            }}
+            placeholder="sk-..."
           />
         </label>
       </section>

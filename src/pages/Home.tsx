@@ -7,6 +7,7 @@ import { RingTimer } from '@/components/RingTimer';
 import { PhaseRibbon } from '@/components/PhaseRibbon';
 import { WindowEditor } from '@/components/WindowEditor';
 import { EatingWindowControls } from '@/components/EatingWindowControls';
+import { MealLogger } from '@/components/MealLogger';
 import { currentPhase } from '@/lib/phases';
 import { getProtocol } from '@/lib/protocols';
 import {
@@ -43,22 +44,18 @@ export function Home() {
 
   // ── What each button does depends on current state ──────────────────────
   async function handleFirstMeal(ts: number) {
-    if (status.kind === 'eating' && latest?.id) {
-      // Already eating — correct the window's start time
-      await updateWindow(latest.id, { startedAt: ts });
+    if (status.kind === 'eating' && status.window.id) {
+      await updateWindow(status.window.id, { startedAt: ts });
     } else {
-      // Fasting — open a new eating window
       await openWindow(ts);
     }
   }
 
   async function handleLastMeal(ts: number) {
     if (status.kind === 'eating') {
-      // Close the current eating window; fast clock starts from ts
       await closeWindow(ts);
-    } else if (latest?.id) {
-      // Fasting — correct the most recent window's end (i.e. correct when fast started)
-      await updateWindow(latest.id, { endedAt: ts });
+    } else if (status.kind === 'fasting' && status.lastWindow.id) {
+      await updateWindow(status.lastWindow.id, { endedAt: ts });
     }
   }
 
@@ -129,6 +126,8 @@ export function Home() {
             ) : null}
           </div>
         </section>
+
+        {status.window.id ? <MealLogger windowId={status.window.id} weightLb={settings.weightLb} /> : null}
 
         <section className="card">
           <div className="label">During the eating window</div>

@@ -3,13 +3,19 @@ import {
   db,
   getRecentWindows,
   getSettings,
+  getFoodItems,
+  getMealEntries,
   saveSettings,
   type EatingWindow,
+  type FoodItem,
+  type MealEntry,
   type UserSettings,
 } from '@/lib/db';
 
 interface FastState {
   windows: EatingWindow[];
+  foodItems: FoodItem[];
+  mealEntries: MealEntry[];
   settings: UserSettings;
   loading: boolean;
   hydrate: () => Promise<void>;
@@ -22,6 +28,11 @@ interface FastState {
   ) => Promise<number>;
   updateWindow: (id: number, patch: Partial<EatingWindow>) => Promise<void>;
   deleteWindow: (id: number) => Promise<void>;
+  addFoodItem: (item: Omit<FoodItem, 'id'>) => Promise<number>;
+  logMeal: (windowId: number, foodItemId: number, quantity?: number, measurementLabel?: string, loggedAt?: number) => Promise<void>;
+  updateMealEntry: (mealEntryId: number, patch: Partial<MealEntry>) => Promise<void>;
+  removeMeal: (mealEntryId: number) => Promise<void>;
+  getMealsForWindow: (windowId: number) => MealEntry[];
   patchSettings: (patch: Partial<UserSettings>) => Promise<void>;
 }
 
@@ -32,12 +43,19 @@ async function refreshWindows(): Promise<EatingWindow[]> {
 
 export const useFastStore = create<FastState>((set, get) => ({
   windows: [],
+  foodItems: [],
+  mealEntries: [],
   settings: { id: 'singleton' },
   loading: true,
 
   async hydrate() {
-    const [windows, settings] = await Promise.all([refreshWindows(), getSettings()]);
-    set({ windows, settings, loading: false });
+    const [windows, settings, foodItems, mealEntries] = await Promise.all([
+      refreshWindows(),
+      getSettings(),
+      getFoodItems(),
+      getMealEntries(),
+    ]);
+    set({ windows, settings, foodItems, mealEntries, loading: false });
   },
 
   async openWindow(startedAt) {
@@ -84,6 +102,45 @@ export const useFastStore = create<FastState>((set, get) => ({
   async deleteWindow(id) {
     await db.windows.delete(id);
     set({ windows: await refreshWindows() });
+  },
+
+  async addFoodItem(item) {
+    const id = await db.foodItems.add(item);
+    set({ foodItems: await getFoodItems() });
+    return id;
+  },
+
+  async logMeal(windowId, foodItemId, quantity = 1, measurementLabel, loggedAt = Date.now()) {
+    const food = get().foodItems.find(f => f.id === foodItemId);
+    const fallbackMeasurement =
+      measurementLabel
+      ?? food?.measurementOptions?.[0]?.label
+      ?? food?.servingLabel
+      ?? 'serving';
+    await db.mealEntries.add({
+      windowId,
+      foodItemId,
+      quantity,
+      measurementLabel: fallbackMeasurement,
+      loggedAt,
+    });
+    set({ mealEntries: await getMealEntries() });
+  },
+
+  async updateMealEntry(mealEntryId, patch) {
+    await db.mealEntries.update(mealEntryId, patch);
+    set({ mealEntries: await getMealEntries() });
+  },
+
+  async removeMeal(mealEntryId) {
+    await db.mealEntries.delete(mealEntryId);
+    set({ mealEntries: await getMealEntries() });
+  },
+
+  getMealsForWindow(windowId) {
+    return get()
+      .mealEntries.filter(m => m.windowId === windowId)
+      .sort((a, b) => a.loggedAt - b.loggedAt);
   },
 
   async patchSettings(patch) {
