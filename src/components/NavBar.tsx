@@ -8,6 +8,7 @@ const links = [
   { to: '/training', label: 'Train' },
   { to: '/learn', label: 'Learn' },
   { to: '/labs', label: 'Labs' },
+  { to: '/progress', label: 'Progress' },
   { to: '/settings', label: 'Settings' },
 ];
 

@@ -9,6 +9,7 @@ import { Training } from './pages/Training';
 import { Learn } from './pages/Learn';
 import { Labs } from './pages/Labs';
 import { Settings } from './pages/Settings';
+import { Progress } from './pages/Progress';
 
 export default function App() {
   const hydrate = useFastStore(s => s.hydrate);
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="training" element={<Training />} />
         <Route path="learn" element={<Learn />} />
         <Route path="labs" element={<Labs />} />
+        <Route path="progress" element={<Progress />} />
         <Route path="settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
