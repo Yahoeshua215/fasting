@@ -52,7 +52,7 @@ function hourOfDay(ts: number): number {
  * Build a day-by-day stats array for the given range.
  *
  * The eating window is attributed to the day it *started*.
- * Meal entries are attributed to the day the meal was logged.
+ * Meal entries are attributed to the day their eating window started.
  */
 export function buildDayStats(
   windows: EatingWindow[],
@@ -114,11 +114,19 @@ export function buildDayStats(
     }
   }
 
-  // Aggregate meal nutrition by day
+  // Build a lookup from windowId → eating window so we can attribute meals
+  // to the day the eating window *started*, not the day the meal was added.
+  // This prevents retroactively-logged meals from appearing on today's date.
+  const windowDateById = new Map<number, string>();
+  for (const w of windows) {
+    if (w.id != null) windowDateById.set(w.id, isoDate(w.startedAt));
+  }
+
+  // Aggregate meal nutrition by eating-window date
   const mealsByDay = new Map<string, MealEntry[]>();
   for (const m of mealEntries) {
-    if (m.loggedAt < cutoff) continue;
-    const key = isoDate(m.loggedAt);
+    const key = windowDateById.get(m.windowId) ?? isoDate(m.loggedAt);
+    if (!statsMap.has(key)) continue; // outside the selected range
     if (!mealsByDay.has(key)) mealsByDay.set(key, []);
     mealsByDay.get(key)!.push(m);
   }

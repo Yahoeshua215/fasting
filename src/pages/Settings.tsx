@@ -1,8 +1,7 @@
 import { db, getSettings, type UserSettings } from '@/lib/db';
-import { getOpenAiApiKey, setOpenAiApiKey } from '@/lib/openai';
 import { PROTOCOLS, type ProtocolId } from '@/lib/protocols';
+import { getProteinTarget } from '@/lib/nutrition';
 import { useFastStore } from '@/store/useFastStore';
-import { useState } from 'react';
 import { USDA_FOODS, usdaToFoodItem } from '@/lib/foodDb';
 
 export function Settings() {
@@ -10,7 +9,6 @@ export function Settings() {
   const loading = useFastStore(s => s.loading);
   const patchSettings = useFastStore(s => s.patchSettings);
   const hydrate = useFastStore(s => s.hydrate);
-  const [openAiApiKey, setOpenAiApiKeyState] = useState(() => getOpenAiApiKey());
 
   if (loading) return <div className="card text-slate-400">Loading…</div>;
 
@@ -23,9 +21,10 @@ export function Settings() {
     const foodItems = await db.foodItems.toArray();
     const mealEntries = await db.mealEntries.toArray();
     const all = await getSettings();
-    const blob = new Blob([JSON.stringify({ windows, foodItems, mealEntries, settings: all }, null, 2)], {
-      type: 'application/json',
-    });
+    const blob = new Blob(
+      [JSON.stringify({ windows, foodItems, mealEntries, settings: all }, null, 2)],
+      { type: 'application/json' },
+    );
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -44,6 +43,8 @@ export function Settings() {
     await hydrate();
   }
 
+  const proteinTarget = settings.weightLb ? getProteinTarget(settings.weightLb) : null;
+
   return (
     <div className="space-y-6">
       <header>
@@ -51,13 +52,17 @@ export function Settings() {
         <h1 className="mt-1 font-display text-3xl">Tune the protocol.</h1>
       </header>
 
+      {/* ── Profile ── */}
       <section className="card">
-        <h2 className="font-display text-lg">You</h2>
-        <div className="mt-3 grid gap-4 sm:grid-cols-3">
+        <h2 className="font-display text-lg">Profile</h2>
+        <p className="mt-1 text-sm text-slate-400">
+          Used to calculate your protein target and training recommendations.
+        </p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <label className="text-sm">
             <span className="label block mb-1">Sex</span>
             <select
-              className="w-full rounded-lg bg-slate-900 border border-slate-800 px-3 py-2"
+              className="w-full rounded-lg bg-slate-900 border border-slate-800 px-3 py-2.5 text-base"
               value={settings.sex ?? ''}
               onChange={e => patch({ sex: (e.target.value || undefined) as UserSettings['sex'] })}
             >
@@ -68,11 +73,12 @@ export function Settings() {
             </select>
           </label>
           <label className="text-sm">
-            <span className="label block mb-1">Weight (lb)</span>
+            <span className="label block mb-1">Body weight (lb)</span>
             <input
               type="number"
               inputMode="decimal"
-              className="w-full rounded-lg bg-slate-900 border border-slate-800 px-3 py-2"
+              placeholder="e.g. 180"
+              className="w-full rounded-lg bg-slate-900 border border-slate-800 px-3 py-2.5 text-base"
               value={settings.weightLb ?? ''}
               onChange={e =>
                 patch({ weightLb: e.target.value ? Number(e.target.value) : undefined })
@@ -82,7 +88,7 @@ export function Settings() {
           <label className="text-sm">
             <span className="label block mb-1">Default protocol</span>
             <select
-              className="w-full rounded-lg bg-slate-900 border border-slate-800 px-3 py-2"
+              className="w-full rounded-lg bg-slate-900 border border-slate-800 px-3 py-2.5 text-base"
               value={settings.defaultProtocol ?? '18:6'}
               onChange={e =>
                 patch({
@@ -98,14 +104,34 @@ export function Settings() {
             </select>
           </label>
         </div>
+
+        {/* Live protein target display */}
+        {proteinTarget ? (
+          <div className="mt-4 rounded-xl border border-cyan-800/40 bg-cyan-950/30 px-4 py-3">
+            <div className="text-xs text-cyan-400 uppercase tracking-wide">Daily protein target</div>
+            <div className="mt-1 font-display text-2xl font-semibold text-cyan-200">
+              {proteinTarget.min}–{proteinTarget.max}g
+            </div>
+            <p className="mt-1 text-xs text-slate-400">
+              Based on {settings.weightLb} lb bodyweight at 0.7–1.0 g/lb (doctor-recommended for
+              lean mass preservation during fasting).
+            </p>
+          </div>
+        ) : (
+          <p className="mt-3 text-xs text-slate-500">
+            Enter your body weight above to see your personalised protein target.
+          </p>
+        )}
+
         {settings.sex === 'female' ? (
           <p className="mt-3 text-xs text-amber-200/80">
-            Long fasted aerobic work and very long fasts behave differently in women. The
-            training page surfaces this; protocols past 24h still apply with extra care.
+            Long fasted aerobic work and very long fasts behave differently in women. The training
+            page surfaces this; protocols past 24h still apply with extra care.
           </p>
         ) : null}
       </section>
 
+      {/* ── Workout window ── */}
       <section className="card">
         <h2 className="font-display text-lg">Workout window</h2>
         <p className="mt-2 text-sm text-slate-400">
@@ -119,7 +145,7 @@ export function Settings() {
             step="0.25"
             min="0.5"
             max="6"
-            className="w-40 rounded-lg bg-slate-900 border border-slate-800 px-3 py-2"
+            className="w-40 rounded-lg bg-slate-900 border border-slate-800 px-3 py-2.5 text-base"
             value={settings.workoutLeadHours ?? 2}
             onChange={e =>
               patch({
@@ -130,28 +156,7 @@ export function Settings() {
         </label>
       </section>
 
-      <section className="card">
-        <h2 className="font-display text-lg">AI</h2>
-        <p className="mt-2 text-sm text-slate-400">
-          Used for nutrition estimates when you add a custom food item.
-        </p>
-        <label className="mt-3 block text-sm">
-          <span className="label block mb-1">OpenAI API key</span>
-          <input
-            type="password"
-            autoComplete="off"
-            className="w-full rounded-lg bg-slate-900 border border-slate-800 px-3 py-2.5 text-base"
-            value={openAiApiKey}
-            onChange={e => {
-              const value = e.target.value;
-              setOpenAiApiKeyState(value);
-              setOpenAiApiKey(value);
-            }}
-            placeholder="sk-..."
-          />
-        </label>
-      </section>
-
+      {/* ── Data ── */}
       <section className="card">
         <h2 className="font-display text-lg">Data</h2>
         <p className="mt-2 text-sm text-slate-400">
