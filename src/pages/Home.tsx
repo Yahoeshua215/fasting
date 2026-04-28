@@ -8,6 +8,7 @@ import { PhaseRibbon } from '@/components/PhaseRibbon';
 import { WindowEditor } from '@/components/WindowEditor';
 import { EatingWindowControls } from '@/components/EatingWindowControls';
 import { MealLogger } from '@/components/MealLogger';
+import { WindowMealCard } from '@/components/WindowMealCard';
 import { currentPhase } from '@/lib/phases';
 import { getProtocol } from '@/lib/protocols';
 import {
@@ -227,6 +228,9 @@ export function Home() {
         <PhaseRibbon elapsedHours={elapsedHours} totalHours={totalHours} />
       </section>
 
+      {/* ── Eating window meal history ── */}
+      <PastWindowHistory windows={windows} settings={settings} />
+
       <section className="card">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
           <div>
@@ -388,6 +392,46 @@ function Onboarding() {
           </button>
         </div>
       </section>
+    </div>
+  );
+}
+
+interface PastWindowHistoryProps {
+  windows: import('@/lib/db').EatingWindow[];
+  settings: import('@/lib/db').UserSettings;
+}
+
+function PastWindowHistory({ windows, settings }: PastWindowHistoryProps) {
+  const [showAll, setShowAll] = useState(false);
+
+  // Only closed windows, most-recent first
+  const closed = [...windows]
+    .filter(w => w.endedAt !== undefined)
+    .sort((a, b) => b.startedAt - a.startedAt);
+
+  if (closed.length === 0) return null;
+
+  const visible = showAll ? closed : closed.slice(0, 3);
+
+  return (
+    <div className="space-y-3">
+      <div className="label">Eating window history</div>
+      {visible.map((w, i) => (
+        <WindowMealCard
+          key={w.id}
+          window={w}
+          weightLb={settings.weightLb}
+          defaultOpen={i === 0}
+        />
+      ))}
+      {closed.length > 3 && (
+        <button
+          className="w-full rounded-xl border border-slate-800 py-2.5 text-sm text-slate-400 hover:text-slate-200 hover:border-slate-700 transition"
+          onClick={() => setShowAll(v => !v)}
+        >
+          {showAll ? 'Show less' : `Show ${closed.length - 3} older windows`}
+        </button>
+      )}
     </div>
   );
 }
