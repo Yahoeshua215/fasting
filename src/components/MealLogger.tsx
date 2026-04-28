@@ -1,10 +1,59 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { formatTimeOfDay } from '@/lib/time';
 import { estimateMacros } from '@/lib/openai';
 import { getMealTotals, getMealProtein, getProteinTarget } from '@/lib/nutrition';
 import { useFastStore } from '@/store/useFastStore';
 import { FoodSearch } from './FoodSearch';
 import type { FoodItem } from '@/lib/db';
+
+/**
+ * Numeric input that lets the user freely edit (including clearing the field)
+ * and only commits to the store on blur — avoiding the "can't delete a digit"
+ * problem that arises when a numeric controlled input rejects empty string.
+ */
+function QuantityInput({
+  value,
+  onCommit,
+  className,
+}: {
+  value: number;
+  onCommit: (next: number) => void;
+  className?: string;
+}) {
+  const [local, setLocal] = useState(String(value));
+  const lastCommitted = useRef(value);
+
+  // Keep display in sync if the external value changes (e.g. after a save).
+  useEffect(() => {
+    if (value !== lastCommitted.current) {
+      setLocal(String(value));
+      lastCommitted.current = value;
+    }
+  }, [value]);
+
+  function handleBlur() {
+    const parsed = parseFloat(local);
+    if (!Number.isNaN(parsed) && parsed > 0) {
+      lastCommitted.current = parsed;
+      onCommit(parsed);
+    } else {
+      // Reset to last valid value
+      setLocal(String(lastCommitted.current));
+    }
+  }
+
+  return (
+    <input
+      type="number"
+      min="0.25"
+      step="0.25"
+      value={local}
+      onChange={e => setLocal(e.target.value)}
+      onBlur={handleBlur}
+      className={className}
+    />
+  );
+}
 
 interface MealLoggerProps {
   windowId: number;
@@ -131,15 +180,9 @@ export function MealLogger({ windowId, weightLb }: MealLoggerProps) {
           <div className="grid gap-2 sm:grid-cols-[100px_1fr]">
             <div>
               <div className="label mb-1">Quantity</div>
-              <input
-                type="number"
-                min="0.25"
-                step="0.25"
+              <QuantityInput
                 value={pendingQty}
-                onChange={e => {
-                  const v = Number(e.target.value);
-                  if (!Number.isNaN(v) && v > 0) setPendingQty(v);
-                }}
+                onCommit={setPendingQty}
                 className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-base"
               />
             </div>
@@ -238,17 +281,9 @@ export function MealLogger({ windowId, weightLb }: MealLoggerProps) {
                   </button>
                 </div>
                 <div className="mt-2 grid gap-2 sm:grid-cols-[100px_1fr]">
-                  <input
-                    type="number"
-                    min="0.25"
-                    step="0.25"
+                  <QuantityInput
                     value={meal.quantity}
-                    onChange={e => {
-                      const v = Number(e.target.value);
-                      if (!Number.isNaN(v) && v > 0) {
-                        void updateMealEntry(meal.id!, { quantity: v });
-                      }
-                    }}
+                    onCommit={v => void updateMealEntry(meal.id!, { quantity: v })}
                     className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm"
                   />
                   <select
