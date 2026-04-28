@@ -36,15 +36,26 @@ export function PhaseRibbon({ elapsedHours, totalHours }: PhaseRibbonProps) {
           );
         })}
       </div>
-      <div className="flex justify-between text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 overflow-x-auto scrollbar-hide">
-        {PHASES.filter(p => p.startHour <= cap).map(p => (
-          <span
-            key={p.startHour}
-            className={cn('shrink-0', elapsedHours >= p.startHour ? 'text-slate-300' : 'text-slate-600')}
-          >
-            {p.startHour}h
-          </span>
-        ))}
+      {/* Labels positioned at the same proportional offsets as the dots above */}
+      <div className="relative h-4">
+        {PHASES.filter(p => p.startHour <= cap).map(p => {
+          const left = (p.startHour / cap) * 100;
+          return (
+            <span
+              key={p.startHour}
+              className={cn(
+                'absolute -translate-x-1/2 text-[10px] sm:text-xs uppercase tracking-widest',
+                elapsedHours >= p.startHour ? 'text-slate-300' : 'text-slate-600',
+                // Pin the first label to the left edge and last to the right so they don't clip
+                p.startHour === 0 && 'translate-x-0',
+                p.startHour === PHASES[PHASES.length - 1].startHour && '-translate-x-full',
+              )}
+              style={{ left: `${left}%` }}
+            >
+              {p.startHour}h
+            </span>
+          );
+        })}
       </div>
       <div className="card">
         <div className="label">Right now — {active.label}</div>
