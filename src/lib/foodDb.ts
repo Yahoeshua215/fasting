@@ -2236,6 +2236,148 @@ export const USDA_FOODS: UsdaFood[] = [
       { label: "32g (double)", grams: 32 },
     ],
   },
+  {
+    name: "Cherry tomatoes",
+    category: "vegetables",
+    per100g: { protein: 0.9, fat: 0.2, carbs: 3.9, calories: 18, fiber: 1.2, sugar: 2.6, sodium: 5 },
+    servings: [
+      { label: "1 cherry (17g)", grams: 17 },
+      { label: "½ cup (74g)", grams: 74 },
+      { label: "1 cup (149g)", grams: 149, isDefault: true },
+      { label: "2 cups (298g)", grams: 298 },
+    ],
+  },
+  {
+    name: "Sugar snap peas",
+    category: "vegetables",
+    per100g: { protein: 2.8, fat: 0.1, carbs: 7.6, calories: 42, fiber: 2.6, sugar: 3.9, sodium: 3 },
+    servings: [
+      { label: "35g (¼ cup)", grams: 35 },
+      { label: "1 cup (98g)", grams: 98, isDefault: true },
+      { label: "196g (double)", grams: 196 },
+    ],
+  },
+  {
+    name: "Mixed green salad (no dressing)",
+    category: "vegetables",
+    per100g: { protein: 1.5, fat: 0.3, carbs: 2.5, calories: 15, fiber: 1.8, sugar: 0.8, sodium: 20 },
+    servings: [
+      { label: "1 cup (57g)", grams: 57 },
+      { label: "2 cups / side salad (114g)", grams: 114, isDefault: true },
+      { label: "large bowl (200g)", grams: 200 },
+    ],
+  },
+  {
+    name: "Hummus",
+    category: "other",
+    per100g: { protein: 7.9, fat: 9.6, carbs: 14.3, calories: 177, fiber: 6, sugar: 0.3, sodium: 379 },
+    servings: [
+      { label: "1 tbsp (15g)", grams: 15 },
+      { label: "2 tbsp (30g)", grams: 30, isDefault: true },
+      { label: "¼ cup (60g)", grams: 60 },
+      { label: "½ cup (120g)", grams: 120 },
+    ],
+  },
+  {
+    name: "Cucumber slices",
+    category: "vegetables",
+    per100g: { protein: 0.7, fat: 0.1, carbs: 3.6, calories: 15, fiber: 0.5, sugar: 1.7, sodium: 2 },
+    servings: [
+      { label: "½ cup sliced (52g)", grams: 52 },
+      { label: "1 cup sliced (104g)", grams: 104, isDefault: true },
+      { label: "1 whole (300g)", grams: 300 },
+    ],
+  },
+  {
+    name: "Radishes",
+    category: "vegetables",
+    per100g: { protein: 0.7, fat: 0.1, carbs: 3.4, calories: 16, fiber: 1.6, sugar: 1.9, sodium: 39 },
+    servings: [
+      { label: "1 medium (4g)", grams: 4 },
+      { label: "½ cup sliced (58g)", grams: 58, isDefault: true },
+      { label: "1 cup sliced (116g)", grams: 116 },
+    ],
+  },
+  {
+    name: "Green onions (scallions)",
+    category: "vegetables",
+    per100g: { protein: 1.8, fat: 0.2, carbs: 7.3, calories: 32, fiber: 2.6, sugar: 2.3, sodium: 16 },
+    servings: [
+      { label: "1 stalk (15g)", grams: 15 },
+      { label: "¼ cup chopped (25g)", grams: 25, isDefault: true },
+      { label: "½ cup chopped (50g)", grams: 50 },
+    ],
+  },
+  {
+    name: "Cabbage, raw",
+    category: "vegetables",
+    per100g: { protein: 1.3, fat: 0.1, carbs: 5.8, calories: 25, fiber: 2.5, sugar: 3.2, sodium: 18 },
+    servings: [
+      { label: "½ cup shredded (45g)", grams: 45 },
+      { label: "1 cup shredded (89g)", grams: 89, isDefault: true },
+      { label: "2 cups shredded (178g)", grams: 178 },
+    ],
+  },
+  {
+    name: "Pumpkin seeds (pepitas)",
+    category: "nuts",
+    per100g: { protein: 30.2, fat: 49.1, carbs: 10.7, calories: 574, fiber: 6, sugar: 1.4, sodium: 7 },
+    servings: [
+      { label: "1 tbsp (9g)", grams: 9 },
+      { label: "2 tbsp (18g)", grams: 18, isDefault: true },
+      { label: "¼ cup (35g)", grams: 35 },
+    ],
+  },
+  {
+    name: "Sunflower seeds",
+    category: "nuts",
+    per100g: { protein: 20.8, fat: 51.5, carbs: 20, calories: 584, fiber: 8.6, sugar: 2.6, sodium: 3 },
+    servings: [
+      { label: "1 tbsp (9g)", grams: 9 },
+      { label: "2 tbsp (17g)", grams: 17, isDefault: true },
+      { label: "¼ cup (35g)", grams: 35 },
+    ],
+  },
+  {
+    name: "Hemp seeds",
+    category: "nuts",
+    per100g: { protein: 31.6, fat: 48.7, carbs: 8.7, calories: 553, fiber: 4, sugar: 1.5, sodium: 5 },
+    servings: [
+      { label: "1 tbsp (10g)", grams: 10 },
+      { label: "3 tbsp (30g)", grams: 30, isDefault: true },
+      { label: "¼ cup (40g)", grams: 40 },
+    ],
+  },
+  {
+    name: "Lentils, cooked",
+    category: "protein",
+    per100g: { protein: 9, fat: 0.4, carbs: 20, calories: 116, fiber: 7.9, sugar: 1.8, sodium: 2 },
+    servings: [
+      { label: "½ cup (99g)", grams: 99 },
+      { label: "1 cup (198g)", grams: 198, isDefault: true },
+      { label: "1½ cups (297g)", grams: 297 },
+    ],
+  },
+  {
+    name: "Chickpeas, cooked",
+    category: "protein",
+    per100g: { protein: 8.9, fat: 2.6, carbs: 27.4, calories: 164, fiber: 7.6, sugar: 4.8, sodium: 7 },
+    servings: [
+      { label: "½ cup (82g)", grams: 82 },
+      { label: "1 cup (164g)", grams: 164, isDefault: true },
+      { label: "1½ cups (246g)", grams: 246 },
+    ],
+  },
+  {
+    name: "Black beans, cooked",
+    category: "protein",
+    per100g: { protein: 8.9, fat: 0.5, carbs: 23.7, calories: 132, fiber: 8.7, sugar: 0.3, sodium: 1 },
+    servings: [
+      { label: "½ cup (86g)", grams: 86 },
+      { label: "1 cup (172g)", grams: 172, isDefault: true },
+      { label: "1½ cups (258g)", grams: 258 },
+    ],
+  },
 ];
 
 /** Convert a USDA food entry to the FoodItem shape used in IndexedDB. */

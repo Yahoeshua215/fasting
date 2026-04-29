@@ -138,9 +138,20 @@ class FastingDB extends Dexie {
       })
       .upgrade(async tx => {
         const foodItems = tx.table<FoodItem>('foodItems');
-        // Remove old built-in seeds (they lack per100g / grams data).
         await foodItems.filter(f => Boolean(f.builtIn)).delete();
-        // Insert the full USDA catalog.
+        await foodItems.bulkAdd(USDA_FOODS.map(usdaToFoodItem));
+      });
+    // v7: refresh the built-in catalog to pick up new foods.
+    this.version(7)
+      .stores({
+        windows: '++id, startedAt, endedAt',
+        settings: 'id',
+        foodItems: '++id, name, source',
+        mealEntries: '++id, windowId, foodItemId, loggedAt',
+      })
+      .upgrade(async tx => {
+        const foodItems = tx.table<FoodItem>('foodItems');
+        await foodItems.filter(f => f.source === 'usda').delete();
         await foodItems.bulkAdd(USDA_FOODS.map(usdaToFoodItem));
       });
   }

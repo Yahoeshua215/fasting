@@ -4,6 +4,7 @@ import { estimateMacros } from '@/lib/openai';
 import { getMealTotals, getMealProtein, getProteinTarget } from '@/lib/nutrition';
 import { useFastStore } from '@/store/useFastStore';
 import { FoodSearch } from './FoodSearch';
+import { cn } from '@/lib/utils';
 import type { FoodItem } from '@/lib/db';
 
 /**
@@ -74,7 +75,14 @@ export function MealLogger({ windowId, weightLb }: MealLoggerProps) {
   const [pendingQty, setPendingQty] = useState(1);
 
   const [addingCustom, setAddingCustom] = useState(false);
+  const [customMode, setCustomMode] = useState<'ai' | 'manual'>('manual');
   const [customInput, setCustomInput] = useState('');
+  const [manualName, setManualName] = useState('');
+  const [manualServing, setManualServing] = useState('1 serving');
+  const [manualProtein, setManualProtein] = useState('');
+  const [manualFat, setManualFat] = useState('');
+  const [manualCarbs, setManualCarbs] = useState('');
+  const [manualCalories, setManualCalories] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -132,6 +140,41 @@ export function MealLogger({ windowId, weightLb }: MealLoggerProps) {
       setAddingCustom(false);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unable to estimate that food right now.');
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  async function handleAddManual() {
+    const name = manualName.trim();
+    if (!name) return;
+    const protein = parseFloat(manualProtein) || 0;
+    const fat = parseFloat(manualFat) || 0;
+    const carbs = parseFloat(manualCarbs) || 0;
+    const calories = parseFloat(manualCalories) || Math.round(protein * 4 + fat * 9 + carbs * 4);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const foodId = await addFoodItem({
+        name,
+        servingLabel: manualServing || '1 serving',
+        protein,
+        fat,
+        carbs,
+        calories,
+        source: 'user' as const,
+      });
+      const newFood = foodItems.find(f => f.id === foodId) ?? { id: foodId, name, servingLabel: manualServing || '1 serving', protein, fat, carbs, calories };
+      handleFoodSelected(newFood as FoodItem);
+      setManualName('');
+      setManualServing('1 serving');
+      setManualProtein('');
+      setManualFat('');
+      setManualCarbs('');
+      setManualCalories('');
+      setAddingCustom(false);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not save food.');
     } finally {
       setSubmitting(false);
     }
@@ -215,38 +258,98 @@ export function MealLogger({ windowId, weightLb }: MealLoggerProps) {
         </div>
       )}
 
-      {/* ── Add custom via AI ── */}
+      {/* ── Add custom food ── */}
       <div className="mt-3">
         <button
           className="text-xs text-slate-400 hover:text-slate-200 min-h-[44px] flex items-center gap-1"
           onClick={() => setAddingCustom(v => !v)}
         >
-          + Add custom food with AI estimate
+          + Add custom food
         </button>
         {addingCustom && (
-          <div className="mt-2 space-y-2 rounded-xl border border-slate-800 bg-slate-950/50 p-3">
-            <label className="block text-sm">
-              <span className="label block mb-1">Describe the food</span>
-              <input
-                type="text"
-                value={customInput}
-                onChange={e => setCustomInput(e.target.value)}
-                placeholder="e.g. two scrambled eggs with spinach and feta"
-                className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-base"
-              />
-            </label>
-            <div className="flex gap-2">
+          <div className="mt-2 space-y-3 rounded-xl border border-slate-800 bg-slate-950/50 p-3">
+            <div className="flex rounded-lg border border-slate-800 p-0.5 gap-0.5">
               <button
-                className="btn-primary flex-1"
-                disabled={submitting}
-                onClick={() => void handleAddCustom()}
+                className={cn('flex-1 rounded-md px-3 py-1.5 text-xs transition', customMode === 'manual' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-slate-200')}
+                onClick={() => setCustomMode('manual')}
               >
-                {submitting ? 'Estimating…' : 'Estimate & add'}
+                Enter manually
               </button>
-              <button className="btn-ghost flex-1" onClick={() => setAddingCustom(false)}>
-                Cancel
+              <button
+                className={cn('flex-1 rounded-md px-3 py-1.5 text-xs transition', customMode === 'ai' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-slate-200')}
+                onClick={() => setCustomMode('ai')}
+              >
+                AI estimate
               </button>
             </div>
+
+            {customMode === 'manual' ? (
+              <>
+                <div>
+                  <span className="label block mb-1">Food name</span>
+                  <input
+                    type="text"
+                    value={manualName}
+                    onChange={e => setManualName(e.target.value)}
+                    placeholder="e.g. Greek salad"
+                    className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-base"
+                  />
+                </div>
+                <div>
+                  <span className="label block mb-1">Serving description</span>
+                  <input
+                    type="text"
+                    value={manualServing}
+                    onChange={e => setManualServing(e.target.value)}
+                    placeholder="e.g. 1 cup, 100g"
+                    className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-base"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <span className="label block mb-1">Protein (g)</span>
+                    <input type="number" min="0" step="1" value={manualProtein} onChange={e => setManualProtein(e.target.value)} className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-base" />
+                  </div>
+                  <div>
+                    <span className="label block mb-1">Fat (g)</span>
+                    <input type="number" min="0" step="1" value={manualFat} onChange={e => setManualFat(e.target.value)} className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-base" />
+                  </div>
+                  <div>
+                    <span className="label block mb-1">Carbs (g)</span>
+                    <input type="number" min="0" step="1" value={manualCarbs} onChange={e => setManualCarbs(e.target.value)} className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-base" />
+                  </div>
+                  <div>
+                    <span className="label block mb-1">Calories</span>
+                    <input type="number" min="0" step="1" value={manualCalories} onChange={e => setManualCalories(e.target.value)} placeholder="auto" className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-base placeholder:text-slate-600" />
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button className="btn-primary flex-1" disabled={submitting || !manualName.trim()} onClick={() => void handleAddManual()}>
+                    Add food
+                  </button>
+                  <button className="btn-ghost flex-1" onClick={() => setAddingCustom(false)}>Cancel</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <label className="block text-sm">
+                  <span className="label block mb-1">Describe the food</span>
+                  <input
+                    type="text"
+                    value={customInput}
+                    onChange={e => setCustomInput(e.target.value)}
+                    placeholder="e.g. two scrambled eggs with spinach and feta"
+                    className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-base"
+                  />
+                </label>
+                <div className="flex gap-2">
+                  <button className="btn-primary flex-1" disabled={submitting} onClick={() => void handleAddCustom()}>
+                    {submitting ? 'Estimating…' : 'Estimate & add'}
+                  </button>
+                  <button className="btn-ghost flex-1" onClick={() => setAddingCustom(false)}>Cancel</button>
+                </div>
+              </>
+            )}
             {error && <p className="text-xs text-rose-300">{error}</p>}
           </div>
         )}
