@@ -141,7 +141,8 @@ class FastingDB extends Dexie {
         await foodItems.filter(f => Boolean(f.builtIn)).delete();
         await foodItems.bulkAdd(USDA_FOODS.map(usdaToFoodItem));
       });
-    // v7: refresh the built-in catalog to pick up new foods.
+    // v7: refresh the built-in catalog — upsert by name to preserve IDs so
+    // existing meal entries keep working.
     this.version(7)
       .stores({
         windows: '++id, startedAt, endedAt',
@@ -151,8 +152,53 @@ class FastingDB extends Dexie {
       })
       .upgrade(async tx => {
         const foodItems = tx.table<FoodItem>('foodItems');
-        await foodItems.filter(f => f.source === 'usda').delete();
-        await foodItems.bulkAdd(USDA_FOODS.map(usdaToFoodItem));
+        const existing = await foodItems.filter(f => f.source === 'usda').toArray();
+        const byName = new Map(existing.map(f => [f.name, f.id!]));
+        for (const food of USDA_FOODS.map(usdaToFoodItem)) {
+          const existingId = byName.get(food.name);
+          if (existingId !== undefined) {
+            await foodItems.update(existingId, food);
+          } else {
+            await foodItems.add(food);
+          }
+        }
+      });
+    // v8: recover meal entries broken by an earlier v7 that used delete+reinsert.
+    // Infers the original food name from the sequential bulk-insert ordering of v6,
+    // then re-points the foodItemId at the current food with that name.
+    this.version(8)
+      .stores({
+        windows: '++id, startedAt, endedAt',
+        settings: 'id',
+        foodItems: '++id, name, source',
+        mealEntries: '++id, windowId, foodItemId, loggedAt',
+      })
+      .upgrade(async tx => {
+        const foodItems = tx.table<FoodItem>('foodItems');
+        const mealEntries = tx.table<MealEntry>('mealEntries');
+
+        const allFoods = await foodItems.toArray();
+        const currentIds = new Set(allFoods.map(f => f.id!));
+        const nameToId = new Map(allFoods.map(f => [f.name, f.id!]));
+
+        const allMeals = await mealEntries.toArray();
+        const orphaned = allMeals.filter(m => !currentIds.has(m.foodItemId));
+        if (orphaned.length === 0) return;
+
+        // The v6 USDA seed was a single bulkAdd — IDs are contiguous.
+        // The minimum orphaned ID is where that seed started.
+        const orphanedIds = [...new Set(orphaned.map(m => m.foodItemId))].sort((a, b) => a - b);
+        const startId = orphanedIds[0];
+
+        for (const meal of orphaned) {
+          const index = meal.foodItemId - startId;
+          if (index >= 0 && index < USDA_FOODS.length) {
+            const newId = nameToId.get(USDA_FOODS[index].name);
+            if (newId !== undefined) {
+              await mealEntries.update(meal.id!, { foodItemId: newId });
+            }
+          }
+        }
       });
   }
 }
