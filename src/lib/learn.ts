@@ -73,6 +73,30 @@ export const LEARN_TOPICS: LearnTopic[] = [
     ],
   },
   {
+    id: 'eating-window',
+    title: 'Eating window: protein-forward, real food',
+    summary:
+      'The eating window is where lean mass is protected and the gut is fed. What you eat matters as much as when.',
+    body: [
+      'Protein target: aim for 0.7–1.0 g/lb lean mass per day. Good sources: grass-finished beef, pasture eggs, wild fish, kefir, lentils.',
+      'Plant variety matters more than fiber grams alone — aim for 30–40 different plants per week.',
+      'Use: olive oil cold; butter, ghee, or coconut oil for heat. Inulin/FOS as soluble fiber. Fermented foods (kefir, sauerkraut, kimchi) for postbiotics including K2.',
+      'Avoid: vegetable seed oils, refined wheat, sugary drinks, OJ, charred or heavily fried preparations (AGEs). White rice is fine when prepared as resistant starch: soak → drain → cook → cool → reheat.',
+    ],
+  },
+  {
+    id: 'training',
+    title: 'Training: train at the peak of the fast',
+    summary:
+      'The final ~2 hours of your fast — peak growth hormone, better muscle retention. Not all exercise types translate equally.',
+    body: [
+      'Preferred: resistance training, HIIT (30–45s work / 30–45s rest), bodyweight flow — planks, leg lifts.',
+      'Limited: moderate aerobic — keep fasted cardio to ~15–20 min.',
+      'Avoid: long-duration steady-state aerobic (40+ min). Heavy aerobic loads have been associated with more coronary artery disease, not less.',
+      'Women: long fasted aerobic work can drive muscle catabolism and HPA axis stress. Resistance and HIIT translate well; long fasted treadmill sessions do not.',
+    ],
+  },
+  {
     id: 'gut-and-mouth',
     title: 'Mold, leaky gut, oral microbiome',
     summary:

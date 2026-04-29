@@ -4,10 +4,7 @@ import { cn } from '@/lib/utils';
 const links = [
   { to: '/', label: 'Now', end: true },
   { to: '/protocols', label: 'Protocols' },
-  { to: '/eating', label: 'Eating' },
-  { to: '/training', label: 'Train' },
   { to: '/learn', label: 'Learn' },
-  { to: '/labs', label: 'Labs' },
   { to: '/progress', label: 'Progress' },
   { to: '/settings', label: 'Settings' },
 ];
