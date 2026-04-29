@@ -200,6 +200,17 @@ class FastingDB extends Dexie {
           }
         }
       });
+    // v9: clear corrupted meal entries from broken v7/v8 migrations.
+    this.version(9)
+      .stores({
+        windows: '++id, startedAt, endedAt',
+        settings: 'id',
+        foodItems: '++id, name, source',
+        mealEntries: '++id, windowId, foodItemId, loggedAt',
+      })
+      .upgrade(async tx => {
+        await tx.table('mealEntries').clear();
+      });
   }
 }
 
