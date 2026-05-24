@@ -211,6 +211,28 @@ class FastingDB extends Dexie {
       .upgrade(async tx => {
         await tx.table('mealEntries').clear();
       });
+    // v10: upsert expanded keto / whole-food catalog (new cuts, dairy, veg,
+    // fats, pantry staples, and prepared-food estimates).
+    this.version(10)
+      .stores({
+        windows: '++id, startedAt, endedAt',
+        settings: 'id',
+        foodItems: '++id, name, source',
+        mealEntries: '++id, windowId, foodItemId, loggedAt',
+      })
+      .upgrade(async tx => {
+        const foodItems = tx.table<FoodItem>('foodItems');
+        const existing = await foodItems.filter(f => f.source === 'usda').toArray();
+        const byName = new Map(existing.map(f => [f.name, f.id!]));
+        for (const food of USDA_FOODS.map(usdaToFoodItem)) {
+          const existingId = byName.get(food.name);
+          if (existingId !== undefined) {
+            await foodItems.update(existingId, food);
+          } else {
+            await foodItems.add(food);
+          }
+        }
+      });
   }
 }
 

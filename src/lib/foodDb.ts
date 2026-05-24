@@ -2378,6 +2378,1326 @@ export const USDA_FOODS: UsdaFood[] = [
       { label: "1½ cups (258g)", grams: 258 },
     ],
   },
+
+  // ── Keto / whole-food expansion ──────────────────────────────────────────
+
+  // Beef — additional cuts
+  {
+    name: "Beef T-bone steak, cooked",
+    category: "protein",
+    per100g: { protein: 26.1, fat: 13.9, carbs: 0, calories: 233, fiber: 0, sugar: 0, sodium: 61 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Beef NY strip steak, cooked",
+    category: "protein",
+    per100g: { protein: 27.9, fat: 11.3, carbs: 0, calories: 218, fiber: 0, sugar: 0, sodium: 59 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Beef short ribs, braised",
+    category: "protein",
+    per100g: { protein: 16.5, fat: 32.4, carbs: 0, calories: 357, fiber: 0, sugar: 0, sodium: 67 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+  {
+    name: "Beef brisket, cooked",
+    category: "protein",
+    per100g: { protein: 21.9, fat: 15.2, carbs: 0, calories: 225, fiber: 0, sugar: 0, sodium: 55 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Beef chuck roast, braised",
+    category: "protein",
+    per100g: { protein: 26.0, fat: 11.4, carbs: 0, calories: 214, fiber: 0, sugar: 0, sodium: 64 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Beef flank steak, cooked",
+    category: "protein",
+    per100g: { protein: 28.6, fat: 8.3, carbs: 0, calories: 192, fiber: 0, sugar: 0, sodium: 68 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Ground beef, 80% lean",
+    category: "protein",
+    per100g: { protein: 17.4, fat: 20.0, carbs: 0, calories: 254, fiber: 0, sugar: 0, sodium: 66 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Beef jerky",
+    category: "protein",
+    per100g: { protein: 33.2, fat: 11.4, carbs: 11.0, calories: 286, fiber: 0.5, sugar: 6.5, sodium: 1695 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "57g (2 oz)", grams: 57 },
+    ],
+  },
+  {
+    name: "Beef sticks",
+    category: "protein",
+    per100g: { protein: 21.0, fat: 35.0, carbs: 3.5, calories: 407, fiber: 0, sugar: 1.5, sodium: 1700 },
+    servings: [
+      { label: "1 stick (28g)", grams: 28, isDefault: true },
+      { label: "2 sticks (56g)", grams: 56 },
+      { label: "3 sticks (84g)", grams: 84 },
+      { label: "4 sticks (112g)", grams: 112 },
+    ],
+  },
+  // Poultry additions
+  {
+    name: "Chicken wings, cooked",
+    category: "protein",
+    per100g: { protein: 26.9, fat: 19.5, carbs: 0, calories: 290, fiber: 0, sugar: 0, sodium: 96 },
+    servings: [
+      { label: "2 wings (60g)", grams: 60, isDefault: true },
+      { label: "4 wings (120g)", grams: 120 },
+      { label: "6 wings (180g)", grams: 180 },
+      { label: "10 wings (300g)", grams: 300 },
+    ],
+  },
+  {
+    name: "Chicken drumstick, cooked",
+    category: "protein",
+    per100g: { protein: 23.4, fat: 11.2, carbs: 0, calories: 197, fiber: 0, sugar: 0, sodium: 85 },
+    servings: [
+      { label: "1 small (44g)", grams: 44 },
+      { label: "1 medium (52g)", grams: 52, isDefault: true },
+      { label: "2 medium (104g)", grams: 104 },
+      { label: "3 medium (156g)", grams: 156 },
+    ],
+  },
+  {
+    name: "Turkey thigh, cooked",
+    category: "protein",
+    per100g: { protein: 27.4, fat: 12.1, carbs: 0, calories: 222, fiber: 0, sugar: 0, sodium: 79 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  // Pork additions
+  {
+    name: "Pork belly, cooked",
+    category: "protein",
+    per100g: { protein: 9.3, fat: 59.9, carbs: 0, calories: 591, fiber: 0, sugar: 0, sodium: 58 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+  {
+    name: "Pork spare ribs, cooked",
+    category: "protein",
+    per100g: { protein: 21.0, fat: 25.4, carbs: 0, calories: 315, fiber: 0, sugar: 0, sodium: 79 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+  {
+    name: "Pork shoulder, cooked",
+    category: "protein",
+    per100g: { protein: 20.5, fat: 17.4, carbs: 0, calories: 242, fiber: 0, sugar: 0, sodium: 69 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Pork rinds (chicharrones)",
+    category: "protein",
+    per100g: { protein: 54.6, fat: 31.3, carbs: 0.8, calories: 543, fiber: 0, sugar: 0, sodium: 1789 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "57g (2 oz)", grams: 57 },
+    ],
+  },
+  // Deli / cured meats
+  {
+    name: "Prosciutto",
+    category: "protein",
+    per100g: { protein: 26.0, fat: 14.0, carbs: 0.1, calories: 234, fiber: 0, sugar: 0, sodium: 2400 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "57g (2 oz)", grams: 57 },
+    ],
+  },
+  {
+    name: "Salami, hard",
+    category: "protein",
+    per100g: { protein: 21.3, fat: 34.9, carbs: 2.4, calories: 408, fiber: 0, sugar: 0.8, sodium: 1890 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (~4 slices) (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "57g (2 oz)", grams: 57 },
+    ],
+  },
+  {
+    name: "Pepperoni",
+    category: "protein",
+    per100g: { protein: 19.3, fat: 40.2, carbs: 1.8, calories: 453, fiber: 0, sugar: 0.4, sodium: 1761 },
+    servings: [
+      { label: "14g (~7 slices)", grams: 14 },
+      { label: "1 oz (~14 slices) (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ oz)", grams: 42 },
+      { label: "57g (2 oz)", grams: 57 },
+    ],
+  },
+  // Game
+  {
+    name: "Venison, ground",
+    category: "protein",
+    per100g: { protein: 27.7, fat: 6.0, carbs: 0, calories: 163, fiber: 0, sugar: 0, sodium: 72 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  // Seafood additions
+  {
+    name: "Smoked salmon (lox)",
+    category: "protein",
+    per100g: { protein: 18.3, fat: 4.3, carbs: 0, calories: 117, fiber: 0, sugar: 0, sodium: 2000 },
+    servings: [
+      { label: "29g (half serving)", grams: 29 },
+      { label: "2 oz (57g)", grams: 57, isDefault: true },
+      { label: "86g (1½ servings)", grams: 86 },
+      { label: "113g (double)", grams: 113 },
+    ],
+  },
+  {
+    name: "Swordfish, cooked",
+    category: "protein",
+    per100g: { protein: 23.0, fat: 5.2, carbs: 0, calories: 144, fiber: 0, sugar: 0, sodium: 98 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Mahi-mahi, cooked",
+    category: "protein",
+    per100g: { protein: 23.7, fat: 0.9, carbs: 0, calories: 109, fiber: 0, sugar: 0, sodium: 96 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Herring, Atlantic, cooked",
+    category: "protein",
+    per100g: { protein: 19.9, fat: 11.5, carbs: 0, calories: 191, fiber: 0, sugar: 0, sodium: 115 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Oysters, raw",
+    category: "protein",
+    per100g: { protein: 7.1, fat: 2.5, carbs: 3.9, calories: 68, fiber: 0, sugar: 0, sodium: 211 },
+    servings: [
+      { label: "3 medium (42g)", grams: 42 },
+      { label: "6 medium (84g)", grams: 84, isDefault: true },
+      { label: "12 medium (168g)", grams: 168 },
+      { label: "24 medium (336g)", grams: 336 },
+    ],
+  },
+  {
+    name: "Clams, cooked",
+    category: "protein",
+    per100g: { protein: 25.5, fat: 2.0, carbs: 5.1, calories: 148, fiber: 0, sugar: 0, sodium: 112 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+  {
+    name: "Chicken liver, cooked",
+    category: "protein",
+    per100g: { protein: 26.5, fat: 6.5, carbs: 1.1, calories: 167, fiber: 0, sugar: 0, sodium: 71 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+
+  // ── Dairy additions ───────────────────────────────────────────────────────
+  {
+    name: "Greek yogurt, whole milk",
+    category: "dairy",
+    per100g: { protein: 9.0, fat: 5.0, carbs: 3.6, calories: 97, fiber: 0, sugar: 3.6, sodium: 35 },
+    servings: [
+      { label: "85g (half serving)", grams: 85 },
+      { label: "6 oz (170g)", grams: 170, isDefault: true },
+      { label: "255g (1½ servings)", grams: 255 },
+      { label: "340g (double)", grams: 340 },
+    ],
+  },
+  {
+    name: "Gouda cheese",
+    category: "dairy",
+    per100g: { protein: 24.9, fat: 27.4, carbs: 2.2, calories: 356, fiber: 0, sugar: 0.6, sodium: 819 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "56g (double)", grams: 56 },
+    ],
+  },
+  {
+    name: "Swiss cheese",
+    category: "dairy",
+    per100g: { protein: 26.9, fat: 27.8, carbs: 5.4, calories: 380, fiber: 0, sugar: 1.5, sodium: 192 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "56g (double)", grams: 56 },
+    ],
+  },
+  {
+    name: "Goat cheese (chèvre), soft",
+    category: "dairy",
+    per100g: { protein: 18.5, fat: 21.1, carbs: 0.2, calories: 264, fiber: 0, sugar: 0, sodium: 368 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "56g (double)", grams: 56 },
+    ],
+  },
+  {
+    name: "Blue cheese",
+    category: "dairy",
+    per100g: { protein: 21.4, fat: 28.7, carbs: 2.3, calories: 353, fiber: 0, sugar: 0.5, sodium: 1395 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "56g (double)", grams: 56 },
+    ],
+  },
+  {
+    name: "Sour cream, full-fat",
+    category: "dairy",
+    per100g: { protein: 2.4, fat: 20.0, carbs: 3.6, calories: 198, fiber: 0, sugar: 3.6, sodium: 58 },
+    servings: [
+      { label: "15g (1 tbsp)", grams: 15 },
+      { label: "2 tbsp (30g)", grams: 30, isDefault: true },
+      { label: "60g (¼ cup)", grams: 60 },
+      { label: "120g (½ cup)", grams: 120 },
+    ],
+  },
+  {
+    name: "Mascarpone",
+    category: "dairy",
+    per100g: { protein: 4.8, fat: 44.0, carbs: 2.4, calories: 429, fiber: 0, sugar: 2.4, sodium: 44 },
+    servings: [
+      { label: "15g (half serving)", grams: 15 },
+      { label: "2 tbsp (30g)", grams: 30, isDefault: true },
+      { label: "45g (1½ servings)", grams: 45 },
+      { label: "60g (double)", grams: 60 },
+    ],
+  },
+  {
+    name: "Ricotta cheese, whole milk",
+    category: "dairy",
+    per100g: { protein: 8.3, fat: 12.0, carbs: 3.0, calories: 153, fiber: 0, sugar: 0.3, sodium: 84 },
+    servings: [
+      { label: "31g (2 tbsp)", grams: 31 },
+      { label: "¼ cup (62g)", grams: 62, isDefault: true },
+      { label: "½ cup (124g)", grams: 124 },
+      { label: "1 cup (248g)", grams: 248 },
+    ],
+  },
+  {
+    name: "Butter, unsalted",
+    category: "dairy",
+    per100g: { protein: 0.7, fat: 81.1, carbs: 0.1, calories: 717, fiber: 0, sugar: 0.1, sodium: 11 },
+    servings: [
+      { label: "7g (half serving)", grams: 7 },
+      { label: "1 tbsp (14g)", grams: 14, isDefault: true },
+      { label: "21g (1½ servings)", grams: 21 },
+      { label: "28g (double)", grams: 28 },
+    ],
+  },
+  {
+    name: "Half and half",
+    category: "dairy",
+    per100g: { protein: 3.0, fat: 11.5, carbs: 4.3, calories: 130, fiber: 0, sugar: 4.3, sodium: 49 },
+    servings: [
+      { label: "15g (1 tbsp)", grams: 15 },
+      { label: "2 tbsp (30g)", grams: 30, isDefault: true },
+      { label: "60g (¼ cup)", grams: 60 },
+      { label: "120g (½ cup)", grams: 120 },
+    ],
+  },
+  {
+    name: "Kefir, plain, whole milk",
+    category: "dairy",
+    per100g: { protein: 3.8, fat: 3.5, carbs: 4.5, calories: 61, fiber: 0, sugar: 4.5, sodium: 44 },
+    servings: [
+      { label: "120g (half serving)", grams: 120 },
+      { label: "1 cup (240g)", grams: 240, isDefault: true },
+      { label: "360g (1½ servings)", grams: 360 },
+      { label: "480g (double)", grams: 480 },
+    ],
+  },
+  {
+    name: "Cottage cheese, full-fat (4%)",
+    category: "dairy",
+    per100g: { protein: 11.1, fat: 4.5, carbs: 3.4, calories: 98, fiber: 0, sugar: 2.7, sodium: 364 },
+    servings: [
+      { label: "57g (¼ cup)", grams: 57 },
+      { label: "½ cup (113g)", grams: 113, isDefault: true },
+      { label: "170g (¾ cup)", grams: 170 },
+      { label: "226g (1 cup)", grams: 226 },
+    ],
+  },
+  {
+    name: "Fresh mozzarella, whole milk",
+    category: "dairy",
+    per100g: { protein: 17.1, fat: 21.6, carbs: 2.2, calories: 268, fiber: 0, sugar: 0.5, sodium: 373 },
+    servings: [
+      { label: "29g (half serving)", grams: 29 },
+      { label: "2 oz (57g)", grams: 57, isDefault: true },
+      { label: "86g (1½ servings)", grams: 86 },
+      { label: "113g (double)", grams: 113 },
+    ],
+  },
+  {
+    name: "Gruyere cheese",
+    category: "dairy",
+    per100g: { protein: 29.8, fat: 32.3, carbs: 0.4, calories: 413, fiber: 0, sugar: 0.1, sodium: 336 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "56g (double)", grams: 56 },
+    ],
+  },
+  {
+    name: "String cheese (mozzarella stick)",
+    category: "dairy",
+    per100g: { protein: 27.5, fat: 20.6, carbs: 2.8, calories: 313, fiber: 0, sugar: 0.5, sodium: 663 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 stick (28g)", grams: 28, isDefault: true },
+      { label: "2 sticks (56g)", grams: 56 },
+      { label: "3 sticks (84g)", grams: 84 },
+    ],
+  },
+
+  // ── Vegetable additions ───────────────────────────────────────────────────
+  {
+    name: "Fennel bulb, raw",
+    category: "vegetables",
+    per100g: { protein: 1.2, fat: 0.2, carbs: 7.3, calories: 31, fiber: 3.1, sugar: 3.9, sodium: 52 },
+    servings: [
+      { label: "44g (half serving)", grams: 44 },
+      { label: "1 cup sliced (87g)", grams: 87, isDefault: true },
+      { label: "131g (1½ servings)", grams: 131 },
+      { label: "174g (double)", grams: 174 },
+    ],
+  },
+  {
+    name: "Turnip, raw",
+    category: "vegetables",
+    per100g: { protein: 0.9, fat: 0.1, carbs: 6.4, calories: 28, fiber: 1.8, sugar: 3.8, sodium: 67 },
+    servings: [
+      { label: "65g (half serving)", grams: 65 },
+      { label: "1 cup cubed (130g)", grams: 130, isDefault: true },
+      { label: "195g (1½ servings)", grams: 195 },
+      { label: "260g (double)", grams: 260 },
+    ],
+  },
+  {
+    name: "Kohlrabi, raw",
+    category: "vegetables",
+    per100g: { protein: 1.7, fat: 0.1, carbs: 6.2, calories: 27, fiber: 3.6, sugar: 2.6, sodium: 20 },
+    servings: [
+      { label: "68g (half serving)", grams: 68 },
+      { label: "1 cup (135g)", grams: 135, isDefault: true },
+      { label: "203g (1½ servings)", grams: 203 },
+      { label: "270g (double)", grams: 270 },
+    ],
+  },
+  {
+    name: "Watercress",
+    category: "vegetables",
+    per100g: { protein: 2.3, fat: 0.1, carbs: 1.3, calories: 11, fiber: 0.5, sugar: 0.2, sodium: 41 },
+    servings: [
+      { label: "17g (half serving)", grams: 17 },
+      { label: "1 cup (34g)", grams: 34, isDefault: true },
+      { label: "51g (1½ servings)", grams: 51 },
+      { label: "68g (double)", grams: 68 },
+    ],
+  },
+  {
+    name: "Endive, raw",
+    category: "vegetables",
+    per100g: { protein: 1.3, fat: 0.2, carbs: 3.4, calories: 17, fiber: 3.1, sugar: 0.3, sodium: 22 },
+    servings: [
+      { label: "25g (half serving)", grams: 25 },
+      { label: "1 cup (50g)", grams: 50, isDefault: true },
+      { label: "75g (1½ servings)", grams: 75 },
+      { label: "100g (double)", grams: 100 },
+    ],
+  },
+  {
+    name: "Radicchio, raw",
+    category: "vegetables",
+    per100g: { protein: 1.4, fat: 0.2, carbs: 4.5, calories: 23, fiber: 0.9, sugar: 0.6, sodium: 22 },
+    servings: [
+      { label: "20g (half serving)", grams: 20 },
+      { label: "1 cup shredded (40g)", grams: 40, isDefault: true },
+      { label: "60g (1½ servings)", grams: 60 },
+      { label: "80g (double)", grams: 80 },
+    ],
+  },
+  {
+    name: "Napa cabbage, raw",
+    category: "vegetables",
+    per100g: { protein: 1.2, fat: 0.2, carbs: 2.2, calories: 16, fiber: 1.0, sugar: 1.2, sodium: 9 },
+    servings: [
+      { label: "38g (half serving)", grams: 38 },
+      { label: "1 cup shredded (76g)", grams: 76, isDefault: true },
+      { label: "114g (1½ servings)", grams: 114 },
+      { label: "152g (double)", grams: 152 },
+    ],
+  },
+  {
+    name: "Jalapeño pepper",
+    category: "vegetables",
+    per100g: { protein: 0.9, fat: 0.4, carbs: 6.5, calories: 29, fiber: 2.8, sugar: 4.1, sodium: 3 },
+    servings: [
+      { label: "7g (half pepper)", grams: 7 },
+      { label: "1 medium (14g)", grams: 14, isDefault: true },
+      { label: "3 peppers (42g)", grams: 42 },
+      { label: "6 peppers (84g)", grams: 84 },
+    ],
+  },
+  {
+    name: "Shallots, raw",
+    category: "vegetables",
+    per100g: { protein: 2.5, fat: 0.1, carbs: 16.8, calories: 72, fiber: 3.2, sugar: 7.9, sodium: 12 },
+    servings: [
+      { label: "15g (half serving)", grams: 15 },
+      { label: "1 medium (30g)", grams: 30, isDefault: true },
+      { label: "60g (2 medium)", grams: 60 },
+      { label: "120g (4 medium)", grams: 120 },
+    ],
+  },
+  {
+    name: "Jicama, raw",
+    category: "vegetables",
+    per100g: { protein: 0.7, fat: 0.1, carbs: 8.8, calories: 38, fiber: 4.9, sugar: 1.8, sodium: 4 },
+    servings: [
+      { label: "60g (half serving)", grams: 60 },
+      { label: "1 cup sliced (120g)", grams: 120, isDefault: true },
+      { label: "180g (1½ servings)", grams: 180 },
+      { label: "240g (double)", grams: 240 },
+    ],
+  },
+  {
+    name: "Daikon radish, raw",
+    category: "vegetables",
+    per100g: { protein: 0.6, fat: 0.1, carbs: 4.1, calories: 18, fiber: 1.6, sugar: 2.5, sodium: 21 },
+    servings: [
+      { label: "58g (half serving)", grams: 58 },
+      { label: "1 cup (116g)", grams: 116, isDefault: true },
+      { label: "174g (1½ servings)", grams: 174 },
+      { label: "232g (double)", grams: 232 },
+    ],
+  },
+  {
+    name: "Spaghetti squash, cooked",
+    category: "vegetables",
+    per100g: { protein: 0.6, fat: 0.6, carbs: 6.9, calories: 31, fiber: 1.5, sugar: 2.8, sodium: 17 },
+    servings: [
+      { label: "78g (half serving)", grams: 78 },
+      { label: "1 cup (155g)", grams: 155, isDefault: true },
+      { label: "233g (1½ servings)", grams: 233 },
+      { label: "310g (double)", grams: 310 },
+    ],
+  },
+  {
+    name: "Hearts of palm",
+    category: "vegetables",
+    per100g: { protein: 1.8, fat: 0.4, carbs: 4.0, calories: 28, fiber: 2.9, sugar: 2.5, sodium: 311 },
+    servings: [
+      { label: "37g (half serving)", grams: 37 },
+      { label: "½ cup sliced (73g)", grams: 73, isDefault: true },
+      { label: "110g (1½ servings)", grams: 110 },
+      { label: "146g (double)", grams: 146 },
+    ],
+  },
+  {
+    name: "Kalamata olives",
+    category: "vegetables",
+    per100g: { protein: 0.8, fat: 14.2, carbs: 3.8, calories: 145, fiber: 1.6, sugar: 0, sodium: 735 },
+    servings: [
+      { label: "13g (half serving)", grams: 13 },
+      { label: "5 olives (25g)", grams: 25, isDefault: true },
+      { label: "50g (10 olives)", grams: 50 },
+      { label: "100g (20 olives)", grams: 100 },
+    ],
+  },
+  {
+    name: "Capers",
+    category: "vegetables",
+    per100g: { protein: 2.4, fat: 0.9, carbs: 4.9, calories: 23, fiber: 3.2, sugar: 0, sodium: 2964 },
+    servings: [
+      { label: "5g (1 tsp)", grams: 5 },
+      { label: "1 tbsp (9g)", grams: 9, isDefault: true },
+      { label: "18g (2 tbsp)", grams: 18 },
+      { label: "36g (¼ cup)", grams: 36 },
+    ],
+  },
+
+  // ── Fat additions ─────────────────────────────────────────────────────────
+  {
+    name: "MCT oil",
+    category: "fats",
+    per100g: { protein: 0, fat: 100, carbs: 0, calories: 885, fiber: 0, sugar: 0, sodium: 0 },
+    servings: [
+      { label: "7g (half serving)", grams: 7 },
+      { label: "1 tbsp (14g)", grams: 14, isDefault: true },
+      { label: "21g (1½ servings)", grams: 21 },
+      { label: "28g (double)", grams: 28 },
+    ],
+  },
+  {
+    name: "Beef tallow",
+    category: "fats",
+    per100g: { protein: 0, fat: 99.8, carbs: 0, calories: 902, fiber: 0, sugar: 0, sodium: 0 },
+    servings: [
+      { label: "7g (half serving)", grams: 7 },
+      { label: "1 tbsp (13g)", grams: 13, isDefault: true },
+      { label: "20g (1½ servings)", grams: 20 },
+      { label: "26g (double)", grams: 26 },
+    ],
+  },
+  {
+    name: "Duck fat",
+    category: "fats",
+    per100g: { protein: 0, fat: 99.8, carbs: 0, calories: 900, fiber: 0, sugar: 0, sodium: 0 },
+    servings: [
+      { label: "7g (half serving)", grams: 7 },
+      { label: "1 tbsp (14g)", grams: 14, isDefault: true },
+      { label: "21g (1½ servings)", grams: 21 },
+      { label: "28g (double)", grams: 28 },
+    ],
+  },
+  {
+    name: "Coconut butter (manna)",
+    category: "fats",
+    per100g: { protein: 6.7, fat: 62.1, carbs: 22.1, calories: 650, fiber: 14.6, sugar: 7.5, sodium: 9 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "2 tbsp (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "56g (double)", grams: 56 },
+    ],
+  },
+  {
+    name: "Walnut oil",
+    category: "fats",
+    per100g: { protein: 0, fat: 100, carbs: 0, calories: 884, fiber: 0, sugar: 0, sodium: 0 },
+    servings: [
+      { label: "7g (half serving)", grams: 7 },
+      { label: "1 tbsp (14g)", grams: 14, isDefault: true },
+      { label: "21g (1½ servings)", grams: 21 },
+      { label: "28g (double)", grams: 28 },
+    ],
+  },
+  {
+    name: "Macadamia oil",
+    category: "fats",
+    per100g: { protein: 0, fat: 100, carbs: 0, calories: 884, fiber: 0, sugar: 0, sodium: 0 },
+    servings: [
+      { label: "7g (half serving)", grams: 7 },
+      { label: "1 tbsp (14g)", grams: 14, isDefault: true },
+      { label: "21g (1½ servings)", grams: 21 },
+      { label: "28g (double)", grams: 28 },
+    ],
+  },
+  {
+    name: "Flaxseed oil",
+    category: "fats",
+    per100g: { protein: 0, fat: 99.9, carbs: 0, calories: 884, fiber: 0, sugar: 0, sodium: 0 },
+    servings: [
+      { label: "7g (half serving)", grams: 7 },
+      { label: "1 tbsp (14g)", grams: 14, isDefault: true },
+      { label: "21g (1½ servings)", grams: 21 },
+      { label: "28g (double)", grams: 28 },
+    ],
+  },
+
+  // ── Pantry / condiment additions ──────────────────────────────────────────
+  {
+    name: "Bone broth, beef",
+    category: "other",
+    per100g: { protein: 4.0, fat: 0.5, carbs: 0, calories: 21, fiber: 0, sugar: 0, sodium: 250 },
+    servings: [
+      { label: "120g (½ cup)", grams: 120 },
+      { label: "1 cup (240g)", grams: 240, isDefault: true },
+      { label: "360g (1½ cups)", grams: 360 },
+      { label: "480g (2 cups)", grams: 480 },
+    ],
+  },
+  {
+    name: "Bone broth, chicken",
+    category: "other",
+    per100g: { protein: 3.5, fat: 0.5, carbs: 0, calories: 17, fiber: 0, sugar: 0, sodium: 180 },
+    servings: [
+      { label: "120g (½ cup)", grams: 120 },
+      { label: "1 cup (240g)", grams: 240, isDefault: true },
+      { label: "360g (1½ cups)", grams: 360 },
+      { label: "480g (2 cups)", grams: 480 },
+    ],
+  },
+  {
+    name: "Coconut cream",
+    category: "other",
+    per100g: { protein: 2.3, fat: 24.2, carbs: 4.5, calories: 239, fiber: 0, sugar: 3.0, sodium: 15 },
+    servings: [
+      { label: "15g (1 tbsp)", grams: 15 },
+      { label: "2 tbsp (30g)", grams: 30, isDefault: true },
+      { label: "60g (¼ cup)", grams: 60 },
+      { label: "120g (½ cup)", grams: 120 },
+    ],
+  },
+  {
+    name: "Coconut flakes, unsweetened",
+    category: "other",
+    per100g: { protein: 6.9, fat: 64.5, carbs: 24.1, calories: 660, fiber: 16.3, sugar: 7.6, sodium: 27 },
+    servings: [
+      { label: "10g (half serving)", grams: 10 },
+      { label: "¼ cup (20g)", grams: 20, isDefault: true },
+      { label: "30g (1½ servings)", grams: 30 },
+      { label: "40g (double)", grams: 40 },
+    ],
+  },
+  {
+    name: "Mayonnaise, full-fat",
+    category: "other",
+    per100g: { protein: 1.1, fat: 77.7, carbs: 2.9, calories: 717, fiber: 0, sugar: 1.0, sodium: 635 },
+    servings: [
+      { label: "8g (half serving)", grams: 8 },
+      { label: "1 tbsp (15g)", grams: 15, isDefault: true },
+      { label: "23g (1½ servings)", grams: 23 },
+      { label: "30g (double)", grams: 30 },
+    ],
+  },
+  {
+    name: "Dijon mustard",
+    category: "other",
+    per100g: { protein: 5.8, fat: 4.5, carbs: 5.8, calories: 66, fiber: 3.3, sugar: 1.7, sodium: 1134 },
+    servings: [
+      { label: "3g (½ tsp)", grams: 3 },
+      { label: "1 tsp (5g)", grams: 5, isDefault: true },
+      { label: "1 tbsp (15g)", grams: 15 },
+      { label: "2 tbsp (30g)", grams: 30 },
+    ],
+  },
+  {
+    name: "Hot sauce (Tabasco-style)",
+    category: "other",
+    per100g: { protein: 0.7, fat: 0.2, carbs: 1.0, calories: 11, fiber: 0, sugar: 0, sodium: 3110 },
+    servings: [
+      { label: "3g (½ tsp)", grams: 3 },
+      { label: "1 tsp (5g)", grams: 5, isDefault: true },
+      { label: "1 tbsp (15g)", grams: 15 },
+      { label: "2 tbsp (30g)", grams: 30 },
+    ],
+  },
+  {
+    name: "Crème fraîche",
+    category: "other",
+    per100g: { protein: 2.0, fat: 30.0, carbs: 2.9, calories: 295, fiber: 0, sugar: 2.9, sodium: 40 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "2 tbsp (28g)", grams: 28, isDefault: true },
+      { label: "56g (¼ cup)", grams: 56 },
+      { label: "112g (½ cup)", grams: 112 },
+    ],
+  },
+  {
+    name: "Dark chocolate, 90%+",
+    category: "other",
+    per100g: { protein: 11.0, fat: 50.0, carbs: 29.0, calories: 600, fiber: 14.0, sugar: 6.0, sodium: 18 },
+    servings: [
+      { label: "14g (half serving)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ servings)", grams: 42 },
+      { label: "56g (double)", grams: 56 },
+    ],
+  },
+  {
+    name: "Guacamole",
+    category: "other",
+    per100g: { protein: 1.5, fat: 10.7, carbs: 6.7, calories: 130, fiber: 4.3, sugar: 0.7, sodium: 280 },
+    servings: [
+      { label: "16g (half serving)", grams: 16 },
+      { label: "2 tbsp (32g)", grams: 32, isDefault: true },
+      { label: "60g (¼ cup)", grams: 60 },
+      { label: "120g (½ cup)", grams: 120 },
+    ],
+  },
+
+  // ── Prepared / restaurant-style foods (general estimates) ─────────────────
+  {
+    name: "Caesar salad, no croutons",
+    category: "other",
+    per100g: { protein: 4.0, fat: 10.0, carbs: 3.0, calories: 118, fiber: 1.0, sugar: 1.0, sodium: 280 },
+    servings: [
+      { label: "side (150g)", grams: 150 },
+      { label: "entrée (300g)", grams: 300, isDefault: true },
+      { label: "large (450g)", grams: 450 },
+    ],
+  },
+  {
+    name: "Greek salad",
+    category: "other",
+    per100g: { protein: 2.5, fat: 8.0, carbs: 5.0, calories: 100, fiber: 1.5, sugar: 3.0, sodium: 340 },
+    servings: [
+      { label: "side (150g)", grams: 150 },
+      { label: "entrée (280g)", grams: 280, isDefault: true },
+      { label: "large (420g)", grams: 420 },
+    ],
+  },
+  {
+    name: "Garden salad with vegetables",
+    category: "other",
+    per100g: { protein: 1.5, fat: 0.3, carbs: 3.5, calories: 22, fiber: 1.8, sugar: 2.0, sodium: 20 },
+    servings: [
+      { label: "side (150g)", grams: 150 },
+      { label: "entrée (300g)", grams: 300, isDefault: true },
+      { label: "large bowl (450g)", grams: 450 },
+    ],
+  },
+  {
+    name: "Garden salad with olive oil dressing",
+    category: "other",
+    per100g: { protein: 1.3, fat: 5.0, carbs: 3.0, calories: 61, fiber: 1.5, sugar: 1.5, sodium: 120 },
+    servings: [
+      { label: "side (180g)", grams: 180 },
+      { label: "entrée (300g)", grams: 300, isDefault: true },
+      { label: "large (450g)", grams: 450 },
+    ],
+  },
+  {
+    name: "Cobb salad (no croutons)",
+    category: "other",
+    per100g: { protein: 8.0, fat: 10.0, carbs: 2.0, calories: 130, fiber: 1.0, sugar: 1.0, sodium: 330 },
+    servings: [
+      { label: "half (175g)", grams: 175 },
+      { label: "full entrée (350g)", grams: 350, isDefault: true },
+      { label: "large (500g)", grams: 500 },
+    ],
+  },
+  {
+    name: "Kale salad with avocado",
+    category: "other",
+    per100g: { protein: 2.0, fat: 6.0, carbs: 6.0, calories: 82, fiber: 2.5, sugar: 1.5, sodium: 110 },
+    servings: [
+      { label: "side (150g)", grams: 150 },
+      { label: "entrée (300g)", grams: 300, isDefault: true },
+      { label: "large (450g)", grams: 450 },
+    ],
+  },
+  {
+    name: "Spinach salad with bacon & egg",
+    category: "other",
+    per100g: { protein: 7.0, fat: 8.0, carbs: 3.0, calories: 110, fiber: 1.2, sugar: 1.5, sodium: 310 },
+    servings: [
+      { label: "side (150g)", grams: 150 },
+      { label: "entrée (300g)", grams: 300, isDefault: true },
+      { label: "large (450g)", grams: 450 },
+    ],
+  },
+  {
+    name: "Caprese salad",
+    category: "other",
+    per100g: { protein: 8.0, fat: 9.0, carbs: 2.5, calories: 121, fiber: 0.5, sugar: 2.0, sodium: 290 },
+    servings: [
+      { label: "side (100g)", grams: 100 },
+      { label: "entrée (200g)", grams: 200, isDefault: true },
+      { label: "large (300g)", grams: 300 },
+    ],
+  },
+  {
+    name: "Egg salad (mayo-based)",
+    category: "other",
+    per100g: { protein: 8.0, fat: 12.0, carbs: 1.5, calories: 147, fiber: 0, sugar: 0.5, sodium: 310 },
+    servings: [
+      { label: "½ cup (115g)", grams: 115 },
+      { label: "1 cup (230g)", grams: 230, isDefault: true },
+      { label: "1½ cups (345g)", grams: 345 },
+    ],
+  },
+  {
+    name: "Tuna salad (mayo-based)",
+    category: "other",
+    per100g: { protein: 14.0, fat: 8.0, carbs: 1.0, calories: 132, fiber: 0, sugar: 0.5, sodium: 420 },
+    servings: [
+      { label: "½ cup (115g)", grams: 115 },
+      { label: "1 cup (230g)", grams: 230, isDefault: true },
+      { label: "1½ cups (345g)", grams: 345 },
+    ],
+  },
+  {
+    name: "Chicken salad (mayo-based)",
+    category: "other",
+    per100g: { protein: 14.0, fat: 9.0, carbs: 1.5, calories: 142, fiber: 0.2, sugar: 0.5, sodium: 380 },
+    servings: [
+      { label: "½ cup (120g)", grams: 120 },
+      { label: "1 cup (240g)", grams: 240, isDefault: true },
+      { label: "1½ cups (360g)", grams: 360 },
+    ],
+  },
+  {
+    name: "Omelet, 3-egg with vegetables",
+    category: "other",
+    per100g: { protein: 10.0, fat: 8.0, carbs: 2.0, calories: 120, fiber: 0.5, sugar: 1.0, sodium: 260 },
+    servings: [
+      { label: "small (150g)", grams: 150 },
+      { label: "standard (200g)", grams: 200, isDefault: true },
+      { label: "large (250g)", grams: 250 },
+    ],
+  },
+  {
+    name: "Scrambled eggs & bacon (3 eggs + 2 strips)",
+    category: "other",
+    per100g: { protein: 13.0, fat: 13.0, carbs: 1.0, calories: 172, fiber: 0, sugar: 0.5, sodium: 400 },
+    servings: [
+      { label: "small (150g)", grams: 150 },
+      { label: "standard (200g)", grams: 200, isDefault: true },
+      { label: "large (250g)", grams: 250 },
+    ],
+  },
+  {
+    name: "Grilled chicken with vegetables",
+    category: "other",
+    per100g: { protein: 18.0, fat: 4.0, carbs: 5.0, calories: 127, fiber: 2.0, sugar: 2.5, sodium: 220 },
+    servings: [
+      { label: "small (200g)", grams: 200 },
+      { label: "standard (300g)", grams: 300, isDefault: true },
+      { label: "large (400g)", grams: 400 },
+    ],
+  },
+  {
+    name: "Salmon with asparagus",
+    category: "other",
+    per100g: { protein: 18.0, fat: 8.0, carbs: 3.0, calories: 156, fiber: 1.5, sugar: 1.0, sodium: 200 },
+    servings: [
+      { label: "small (200g)", grams: 200 },
+      { label: "standard (280g)", grams: 280, isDefault: true },
+      { label: "large (370g)", grams: 370 },
+    ],
+  },
+  {
+    name: "Beef stir-fry with vegetables (no rice)",
+    category: "other",
+    per100g: { protein: 14.0, fat: 9.0, carbs: 5.0, calories: 154, fiber: 1.5, sugar: 2.0, sodium: 350 },
+    servings: [
+      { label: "small (200g)", grams: 200 },
+      { label: "standard (300g)", grams: 300, isDefault: true },
+      { label: "large (400g)", grams: 400 },
+    ],
+  },
+  {
+    name: "Zucchini noodles with meat sauce",
+    category: "other",
+    per100g: { protein: 10.0, fat: 7.0, carbs: 5.0, calories: 121, fiber: 1.5, sugar: 3.0, sodium: 310 },
+    servings: [
+      { label: "small (200g)", grams: 200 },
+      { label: "standard (300g)", grams: 300, isDefault: true },
+      { label: "large (400g)", grams: 400 },
+    ],
+  },
+  {
+    name: "Burrito bowl (no rice, no beans)",
+    category: "other",
+    per100g: { protein: 12.0, fat: 8.0, carbs: 5.0, calories: 138, fiber: 1.5, sugar: 1.5, sodium: 380 },
+    servings: [
+      { label: "small (250g)", grams: 250 },
+      { label: "standard (350g)", grams: 350, isDefault: true },
+      { label: "large (500g)", grams: 500 },
+    ],
+  },
+  {
+    name: "Bunless burger with lettuce & tomato",
+    category: "other",
+    per100g: { protein: 14.0, fat: 12.0, carbs: 2.0, calories: 172, fiber: 0.3, sugar: 1.0, sodium: 320 },
+    servings: [
+      { label: "small (150g)", grams: 150 },
+      { label: "standard (200g)", grams: 200, isDefault: true },
+      { label: "large double (280g)", grams: 280 },
+    ],
+  },
+  {
+    name: "Steak with side salad",
+    category: "other",
+    per100g: { protein: 20.0, fat: 9.0, carbs: 2.0, calories: 168, fiber: 0.5, sugar: 1.0, sodium: 200 },
+    servings: [
+      { label: "small (250g)", grams: 250 },
+      { label: "standard (350g)", grams: 350, isDefault: true },
+      { label: "large (500g)", grams: 500 },
+    ],
+  },
+  {
+    name: "Shrimp with vegetables",
+    category: "other",
+    per100g: { protein: 14.0, fat: 4.0, carbs: 4.0, calories: 107, fiber: 1.5, sugar: 2.0, sodium: 400 },
+    servings: [
+      { label: "small (200g)", grams: 200 },
+      { label: "standard (280g)", grams: 280, isDefault: true },
+      { label: "large (360g)", grams: 360 },
+    ],
+  },
+  {
+    name: "Ground beef bowl (no rice)",
+    category: "other",
+    per100g: { protein: 14.0, fat: 10.0, carbs: 3.0, calories: 158, fiber: 1.0, sugar: 1.5, sodium: 290 },
+    servings: [
+      { label: "small (200g)", grams: 200 },
+      { label: "standard (300g)", grams: 300, isDefault: true },
+      { label: "large (400g)", grams: 400 },
+    ],
+  },
+  {
+    name: "Cauliflower rice bowl with protein",
+    category: "other",
+    per100g: { protein: 10.0, fat: 6.0, carbs: 4.0, calories: 106, fiber: 1.5, sugar: 1.5, sodium: 260 },
+    servings: [
+      { label: "small (200g)", grams: 200 },
+      { label: "standard (300g)", grams: 300, isDefault: true },
+      { label: "large (400g)", grams: 400 },
+    ],
+  },
+  {
+    name: "Avocado stuffed with tuna",
+    category: "other",
+    per100g: { protein: 8.0, fat: 10.0, carbs: 4.0, calories: 136, fiber: 2.5, sugar: 0.5, sodium: 210 },
+    servings: [
+      { label: "½ avocado (120g)", grams: 120 },
+      { label: "1 avocado (240g)", grams: 240, isDefault: true },
+      { label: "1½ avocados (360g)", grams: 360 },
+    ],
+  },
+  {
+    name: "Deviled eggs",
+    category: "other",
+    per100g: { protein: 9.0, fat: 11.0, carbs: 1.5, calories: 141, fiber: 0, sugar: 0.5, sodium: 200 },
+    servings: [
+      { label: "2 halves / 1 egg (50g)", grams: 50 },
+      { label: "4 halves / 2 eggs (100g)", grams: 100, isDefault: true },
+      { label: "6 halves / 3 eggs (150g)", grams: 150 },
+      { label: "12 halves / 6 eggs (300g)", grams: 300 },
+    ],
+  },
+  {
+    name: "Cheese & charcuterie board",
+    category: "other",
+    per100g: { protein: 16.0, fat: 28.0, carbs: 2.0, calories: 320, fiber: 0, sugar: 0.5, sodium: 900 },
+    servings: [
+      { label: "small snack (60g)", grams: 60 },
+      { label: "standard (100g)", grams: 100, isDefault: true },
+      { label: "generous (200g)", grams: 200 },
+    ],
+  },
+  {
+    name: "Antipasto plate",
+    category: "other",
+    per100g: { protein: 10.0, fat: 18.0, carbs: 3.0, calories: 210, fiber: 0.5, sugar: 1.0, sodium: 750 },
+    servings: [
+      { label: "small (100g)", grams: 100 },
+      { label: "standard (200g)", grams: 200, isDefault: true },
+      { label: "large (300g)", grams: 300 },
+    ],
+  },
+  {
+    name: "Bulletproof coffee (butter + MCT)",
+    category: "other",
+    per100g: { protein: 0.5, fat: 8.0, carbs: 0, calories: 74, fiber: 0, sugar: 0, sodium: 5 },
+    servings: [
+      { label: "small (180g)", grams: 180 },
+      { label: "1 cup (240g)", grams: 240, isDefault: true },
+      { label: "large (360g)", grams: 360 },
+    ],
+  },
+  {
+    name: "Protein shake (whey + water)",
+    category: "other",
+    per100g: { protein: 10.0, fat: 0.6, carbs: 1.3, calories: 51, fiber: 0.3, sugar: 0.7, sodium: 60 },
+    servings: [
+      { label: "small (180g)", grams: 180 },
+      { label: "standard (300g)", grams: 300, isDefault: true },
+      { label: "large (480g)", grams: 480 },
+    ],
+  },
+  {
+    name: "Mixed nuts (variety)",
+    category: "nuts",
+    per100g: { protein: 15.0, fat: 60.0, carbs: 18.0, calories: 628, fiber: 5.5, sugar: 3.5, sodium: 180 },
+    servings: [
+      { label: "14g (small handful)", grams: 14 },
+      { label: "1 oz (28g)", grams: 28, isDefault: true },
+      { label: "42g (1½ oz)", grams: 42 },
+      { label: "56g (2 oz)", grams: 56 },
+    ],
+  },
+
+  // ── Dr. Sten Ekberg philosophy — organ meats, spices, grass-fed ───────────
+
+  // Organ meats (Ekberg strongly advocates these as the most nutrient-dense foods)
+  {
+    name: "Beef heart, cooked",
+    category: "protein",
+    per100g: { protein: 28.0, fat: 6.0, carbs: 0.1, calories: 173, fiber: 0, sugar: 0, sodium: 98 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+  {
+    name: "Beef kidney, cooked",
+    category: "protein",
+    per100g: { protein: 26.4, fat: 3.4, carbs: 0.3, calories: 138, fiber: 0, sugar: 0, sodium: 134 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+  {
+    name: "Lamb liver, cooked",
+    category: "protein",
+    per100g: { protein: 29.0, fat: 6.5, carbs: 3.8, calories: 196, fiber: 0, sugar: 0, sodium: 76 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+  {
+    name: "Chicken hearts, cooked",
+    category: "protein",
+    per100g: { protein: 26.8, fat: 9.3, carbs: 0.2, calories: 199, fiber: 0, sugar: 0, sodium: 74 },
+    servings: [
+      { label: "43g (half serving)", grams: 43 },
+      { label: "3 oz cooked (85g)", grams: 85, isDefault: true },
+      { label: "128g (1½ servings)", grams: 128 },
+      { label: "170g (double)", grams: 170 },
+    ],
+  },
+  // Grass-fed / pasture-raised variants Ekberg emphasizes for superior omega-3 & CLA
+  {
+    name: "Grass-fed ground beef",
+    category: "protein",
+    per100g: { protein: 21.0, fat: 12.0, carbs: 0, calories: 194, fiber: 0, sugar: 0, sodium: 62 },
+    servings: [
+      { label: "57g (half serving)", grams: 57 },
+      { label: "4 oz cooked (113g)", grams: 113, isDefault: true },
+      { label: "170g (1½ servings)", grams: 170 },
+      { label: "226g (double)", grams: 226 },
+    ],
+  },
+  {
+    name: "Pasture-raised eggs",
+    category: "dairy",
+    per100g: { protein: 13.0, fat: 10.6, carbs: 0.7, calories: 148, fiber: 0, sugar: 0.4, sodium: 140 },
+    servings: [
+      { label: "25g (half serving)", grams: 25 },
+      { label: "1 large (50g)", grams: 50, isDefault: true },
+      { label: "3 eggs (150g)", grams: 150 },
+      { label: "6 eggs (300g)", grams: 300 },
+    ],
+  },
+  // Wild-caught seafood Ekberg emphasizes for omega-3s
+  {
+    name: "Sardines, canned in water",
+    category: "protein",
+    per100g: { protein: 22.0, fat: 5.0, carbs: 0, calories: 133, fiber: 0, sugar: 0, sodium: 463 },
+    servings: [
+      { label: "46g (half can)", grams: 46 },
+      { label: "1 can drained (92g)", grams: 92, isDefault: true },
+      { label: "138g (1½ cans)", grams: 138 },
+      { label: "184g (2 cans)", grams: 184 },
+    ],
+  },
+  // Anti-inflammatory spices Ekberg frequently recommends
+  {
+    name: "Turmeric, ground",
+    category: "other",
+    per100g: { protein: 9.7, fat: 3.3, carbs: 65.0, calories: 312, fiber: 22.7, sugar: 3.2, sodium: 38 },
+    servings: [
+      { label: "1g (pinch)", grams: 1 },
+      { label: "1 tsp (3g)", grams: 3, isDefault: true },
+      { label: "1 tbsp (9g)", grams: 9 },
+      { label: "2 tbsp (18g)", grams: 18 },
+    ],
+  },
+  {
+    name: "Turmeric, fresh root",
+    category: "other",
+    per100g: { protein: 2.9, fat: 0.9, carbs: 17.8, calories: 79, fiber: 2.1, sugar: 1.7, sodium: 13 },
+    servings: [
+      { label: "5g (1 tsp grated)", grams: 5 },
+      { label: "1 inch piece (10g)", grams: 10, isDefault: true },
+      { label: "20g (2 inch piece)", grams: 20 },
+      { label: "40g (4 inch piece)", grams: 40 },
+    ],
+  },
+  {
+    name: "Ginger, fresh",
+    category: "other",
+    per100g: { protein: 1.8, fat: 0.8, carbs: 17.8, calories: 80, fiber: 2.0, sugar: 1.7, sodium: 13 },
+    servings: [
+      { label: "5g (1 tsp grated)", grams: 5 },
+      { label: "1 inch piece (10g)", grams: 10, isDefault: true },
+      { label: "20g (2 inch piece)", grams: 20 },
+      { label: "40g (4 inch piece)", grams: 40 },
+    ],
+  },
+  {
+    name: "Cinnamon, ground",
+    category: "other",
+    per100g: { protein: 3.9, fat: 1.2, carbs: 80.6, calories: 261, fiber: 53.1, sugar: 2.2, sodium: 10 },
+    servings: [
+      { label: "1g (pinch)", grams: 1 },
+      { label: "1 tsp (2.6g)", grams: 3, isDefault: true },
+      { label: "1 tbsp (7.8g)", grams: 8 },
+      { label: "2 tbsp (15.6g)", grams: 16 },
+    ],
+  },
+  // Beverages Ekberg recommends for metabolic health
+  {
+    name: "Green tea, brewed",
+    category: "other",
+    per100g: { protein: 0.2, fat: 0, carbs: 0.2, calories: 1, fiber: 0, sugar: 0, sodium: 1 },
+    servings: [
+      { label: "120g (½ cup)", grams: 120 },
+      { label: "1 cup (240g)", grams: 240, isDefault: true },
+      { label: "360g (1½ cups)", grams: 360 },
+      { label: "480g (2 cups)", grams: 480 },
+    ],
+  },
+  {
+    name: "Black coffee, brewed",
+    category: "other",
+    per100g: { protein: 0.3, fat: 0, carbs: 0, calories: 2, fiber: 0, sugar: 0, sodium: 2 },
+    servings: [
+      { label: "120g (½ cup)", grams: 120 },
+      { label: "1 cup (240g)", grams: 240, isDefault: true },
+      { label: "360g (1½ cups)", grams: 360 },
+      { label: "480g (2 cups)", grams: 480 },
+    ],
+  },
+  // Fermented/probiotic foods Ekberg emphasizes for gut health & immunity
+  {
+    name: "Kefir, plain, low-fat",
+    category: "dairy",
+    per100g: { protein: 3.5, fat: 1.0, carbs: 4.7, calories: 41, fiber: 0, sugar: 4.7, sodium: 40 },
+    servings: [
+      { label: "120g (½ cup)", grams: 120 },
+      { label: "1 cup (240g)", grams: 240, isDefault: true },
+      { label: "360g (1½ cups)", grams: 360 },
+      { label: "480g (2 cups)", grams: 480 },
+    ],
+  },
+  // Electrolyte-supporting foods Ekberg recommends during fasting/keto
+  {
+    name: "Himalayan pink salt",
+    category: "other",
+    per100g: { protein: 0, fat: 0, carbs: 0, calories: 0, fiber: 0, sugar: 0, sodium: 36000 },
+    servings: [
+      { label: "½ tsp (1.5g)", grams: 2 },
+      { label: "1 tsp (3g)", grams: 3, isDefault: true },
+      { label: "1 tbsp (9g)", grams: 9 },
+    ],
+  },
+  {
+    name: "Spirulina powder",
+    category: "other",
+    per100g: { protein: 57.5, fat: 7.7, carbs: 23.9, calories: 290, fiber: 3.6, sugar: 3.1, sodium: 1048 },
+    servings: [
+      { label: "1 tsp (3g)", grams: 3 },
+      { label: "1 tbsp (7g)", grams: 7, isDefault: true },
+      { label: "2 tbsp (14g)", grams: 14 },
+      { label: "3 tbsp (21g)", grams: 21 },
+    ],
+  },
 ];
 
 /** Convert a USDA food entry to the FoodItem shape used in IndexedDB. */
