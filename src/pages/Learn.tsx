@@ -11,8 +11,8 @@ export function Learn() {
         <div className="label">Education library</div>
         <h1 className="mt-1 font-display text-3xl">Why it works.</h1>
         <p className="mt-2 text-sm text-slate-300">
-          These are the load-bearing ideas behind the protocol. Paraphrased from Dr. Pradip
-          Jamnadas's lectures and corroborated where applicable.
+          The load-bearing ideas behind the protocol. Paraphrased from Dr. Pradip Jamnadas
+          and Dr. Sten Ekberg's work, corroborated where applicable.
         </p>
       </header>
 
